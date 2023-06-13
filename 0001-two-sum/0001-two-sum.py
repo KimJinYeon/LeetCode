@@ -1,7 +1,8 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    return [i, j]
-        
+        value_index = dict()
+        for index in range(len(nums)):
+            value = nums[index]
+            if target - value in value_index:
+                return sorted([index, value_index.get(target - value)])
+            value_index[value] = index
